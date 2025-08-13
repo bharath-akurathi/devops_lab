@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/bharath-akurathi/devops_lab.git'
-            }
-        }
-
         stage('Validate HTML') {
             steps {
                 sh 'htmlhint "**/*.html" || true'
