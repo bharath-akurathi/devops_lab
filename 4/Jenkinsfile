@@ -36,7 +36,7 @@ pipeline {
 
         stage('Open in Browser') {
             steps {
-                sh 'open http://localhost:8080/1/Event_registration.html'
+                sh 'open http://localhost:8080/4/Event_registration.html'
             }
         }
     }
