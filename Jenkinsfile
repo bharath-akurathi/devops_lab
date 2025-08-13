@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+        stage('Clone Repository') {
             steps {
                 git 'https://github.com/bharath-akurathi/devops_lab.git'
             }
@@ -10,33 +10,19 @@ pipeline {
 
         stage('Validate HTML') {
             steps {
-                sh '''
-                echo "Validating HTML files..."
-                htmlhint "**/*.html" || true
-                '''
+                sh 'htmlhint "**/*.html" || true'
             }
         }
 
         stage('Deploy Locally') {
             steps {
                 sh '''
-                echo "Deploying to local web server..."
-                DEPLOY_DIR="$HOME/Sites/devops_lab"
-                mkdir -p "$DEPLOY_DIR"
-                cp -r * "$DEPLOY_DIR"
-
-                # Start local server if not running
-                if ! lsof -i:8080 > /dev/null; then
+                    DEPLOY_DIR="$HOME/devops_lab_site"
+                    mkdir -p "$DEPLOY_DIR"
+                    cp -r * "$DEPLOY_DIR"
                     cd "$DEPLOY_DIR"
                     nohup python3 -m http.server 8080 &
-                fi
                 '''
-            }
-        }
-
-        stage('Open in Browser') {
-            steps {
-                sh 'open http://localhost:8080/4/Event_registration.html'
             }
         }
     }
