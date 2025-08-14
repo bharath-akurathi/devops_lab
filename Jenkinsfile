@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        PATH = "$PATH:$(npm bin -g)"  // Ensure Jenkins can see htmlhint
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
@@ -17,10 +13,15 @@ pipeline {
             steps {
                 sh '''
                 echo "Validating HTML files..."
+                
+                # Add npm global bin to PATH for this shell only
+                export PATH="$PATH:$(npm bin -g)"
+                
                 if ! command -v htmlhint &> /dev/null; then
                     echo "Installing HTMLHint..."
                     npm install -g htmlhint
                 fi
+                
                 htmlhint "**/*.html" || true
                 '''
             }
