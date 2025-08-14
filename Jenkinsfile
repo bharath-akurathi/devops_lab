@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 echo "Cloning the repository..."
-                git 'https://github.com/bharath-akurathi/devops_lab.git'
+                git branch: 'main', url: 'https://github.com/bharath-akurathi/devops_lab.git'
             }
         }
 
