@@ -15,7 +15,7 @@ pipeline {
                     mkdir -p "$DEPLOY_DIR"
                     cp -r * "$DEPLOY_DIR"
                     cd "$DEPLOY_DIR"
-                    nohup python3 -m http.server 8080 &
+                    nohup python3 -m http.server 5001 &
                 '''
             }
         }
