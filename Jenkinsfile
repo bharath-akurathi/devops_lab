@@ -4,34 +4,21 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/bharath-akurathi/devops_lab.git'
+                git 'https://github.com/bharath-akurathi/devops_lab.git'
             }
         }
 
-        stage('Deploy') {
+        stage('Run Server on Port 5001') {
             steps {
                 sh '''
-                DEPLOY_DIR="$HOME/devops_demo"
-                mkdir -p "$DEPLOY_DIR"
-                cp -r . "$DEPLOY_DIR"
+                # Kill any process using port 5001
+                lsof -ti:5001 | xargs -r kill -9 || true
 
-                # Stop any server on port 5001
-                # lsof -ti:5001 | xargs -r kill -9 || true
-
-                cd "$DEPLOY_DIR"
+                # Start server directly from the repo folder
                 nohup python3 -m http.server 5001 > server.log 2>&1 &
-                echo "🚀 Site deployed at http://localhost:5001"
+                echo "🚀 Server started at http://localhost:5001"
                 '''
             }
-        }
-    }
-
-    post {
-        success {
-            echo '✅ Deployment successful!'
-        }
-        failure {
-            echo '❌ Deployment failed. Please check the logs.'
         }
     }
 }
