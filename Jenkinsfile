@@ -31,7 +31,7 @@ pipeline {
             echo '✅ Deployment successful!'
         }
         failure {
-            echo '❌ Deployment failed.'
+            echo '❌ Deployment failed. Please check the logs.'
         }
     }
 }
