@@ -7,7 +7,7 @@ pipeline {
         sh '''
           DEPLOY="$HOME/devops_lab_site"
           mkdir -p "$DEPLOY"
-          cp -f 1/Event_registration.html "$DEPLOY"/Event_registration.html
+          cp -f website/Event_registration.html "$DEPLOY"/Event_registration.html
         '''
       }
     }
