@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                bat '''
+                    set "DEPLOY=%USERPROFILE%\\devops_lab_site"
+                    if not exist "%DEPLOY%" mkdir "%DEPLOY%"
+                    copy /Y "website\\Event_registration.html" "%DEPLOY%\\Event_registration.html"
+                '''
+            }
+        }
+
+        stage('Serve') {
+            steps {
+                bat '''
+                    set "DEPLOY=%USERPROFILE%\\devops_lab_site"
+                    set "FILE=%DEPLOY%\\Event_registration.html"
+                    start "" "%FILE%"
+                '''
+            }
+        }
+    }
+}
