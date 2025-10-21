@@ -20,7 +20,6 @@ pipeline {
                     set DEPLOY=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\deploy_output
                     set FILE=%DEPLOY%\\Event_registration.html
                     echo File deployed to: %FILE%
-                    python -m http.server 8081
                 '''
             }
         }
