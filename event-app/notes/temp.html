@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Styling for the form container */
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc; /* Replaced shadow with a simple border */
+            width: 400px;
+            margin: 50px auto; /* Simple way to center horizontally */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Styling for each form row */
+        .form-row {
+            margin-bottom: 15px;
+        }
+
+        .form-row label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Styling for input fields, select, and textarea */
+        input[type="text"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Keeps padding inside the width */
+        }
+        
+        /* Styling for buttons */
+        .buttons {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 8px 12px;
+            border: 1px solid #999;
+            cursor: pointer;
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Event Registration</h1>
+        
+        <!-- The form calls the validateForm() function on submission -->
+        <form name="registrationForm" onsubmit="return validateForm()">
+            <div class="form-row">
+                <label for="fullname">Full Name:</label>
+                <input type="text" name="fullname" id="fullname">
+            </div>
+
+            <div class="form-row">
+                <label for="email">Email ID:</label>
+                <input type="text" name="email" id="email">
+            </div>
+
+            <div class="form-row">
+                <label for="phno">Phone Number:</label>
+                <input type="tel" name="phno" id="phno">
+            </div>
+
+            <div class="form-row">
+                <label>Gender:</label>
+                <input type="radio" name="gender" value="Male"> Male
+                <input type="radio" name="gender" value="Female"> Female
+            </div>
+
+            <div class="form-row">
+                <label for="event">Select Event:</label>
+                <select id="event" name="event">
+                    <option value="">-- Please choose --</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Seminar">Seminar</option>
+                    <option value="Networking">Networking</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="address">Address:</label>
+                <textarea name="address" id="address"></textarea>
+            </div>
+
+            <div class="buttons">
+                <input type="reset" value="Reset">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Get the form using its name
+            const form = document.forms["registrationForm"];
+
+            // 1. Full Name Validation
+            if (form.fullname.value.trim() === "") {
+                alert("Please enter your Full Name.");
+                form.fullname.focus();
+                return false;
+            }
+
+            // 2. Email Validation
+            const email = form.email.value;
+            if (email.trim() === "") {
+                alert("Please enter your Email ID.");
+                form.email.focus();
+                return false;
+            }
+            // Simple check for '@' symbol
+            if (email.indexOf("@") === -1) {
+                alert("Please enter a valid Email ID.");
+                form.email.focus();
+                return false;
+            }
+
+            // 3. Phone Number Validation
+            const phno = form.phno.value;
+            if (phno.trim() === "") {
+                alert("Please enter your Phone Number.");
+                form.phno.focus();
+                return false;
+            }
+            if (isNaN(phno) || phno.length !== 10) {
+                alert("Please enter a valid 10-digit Phone Number.");
+                form.phno.focus();
+                return false;
+            }
+            
+            // 4. Gender Validation
+            if (form.gender.value === "") {
+                alert("Please select your Gender.");
+                return false;
+            }
+
+            // 5. Event Selection Validation
+            if (form.event.value === "") {
+                alert("Please select an Event.");
+                form.event.focus();
+                return false;
+            }
+
+            // 6. Address Validation
+            if (form.address.value.trim() === "") {
+                alert("Please enter your Address.");
+                form.address.focus();
+                return false;
+            }
+
+            // If all checks pass
+            alert("Registration Successful!");
+            return true; // Allows the form to be submitted
+        }
+    </script>
+
+</body>
+</html>
