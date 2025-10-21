@@ -6,10 +6,10 @@ pipeline {
             steps {
                 bat '''
                     set WORKSPACE=%cd%
-                    set DEPLOY=C:\ProgramData\Jenkins\.jenkins\workspace\deploy_output
+                    set DEPLOY=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\deploy_output
 
                     if not exist "%DEPLOY%" mkdir "%DEPLOY%"
-                    copy /Y "%WORKSPACE%\website\Event_registration.html" "%DEPLOY%\Event_registration.html"
+                    copy /Y "%WORKSPACE%\\website\\Event_registration.html" "%DEPLOY%\\Event_registration.html"
                 '''
             }
         }
@@ -17,8 +17,8 @@ pipeline {
         stage('Serve') {
             steps {
                 bat '''
-                    set DEPLOY=C:\ProgramData\Jenkins\.jenkins\workspace\deploy_output
-                    set FILE=%DEPLOY%\Event_registration.html
+                    set DEPLOY=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\deploy_output
+                    set FILE=%DEPLOY%\\Event_registration.html
                     echo File deployed to: %FILE%
                 '''
             }
