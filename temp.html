@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Event Registration</title></head>
+<body>
+<form onsubmit="return validateForm()">
+  <label>Name: </label><input id="name" type="text" placeholder="Full name"><br><br>
+  <label>Email ID: </label><input id="email" type="email" placeholder="Email"><br><br>
+  <label>Phone Number: </label><input id="phone" type="tel" placeholder="Phone"><br><br>
+  <label>Category: </label><select id="ticket"><option>General</option><option>VIP</option></select><br><br>
+  <button type="submit">Register</button>
+</form>
+
+<script>
+function validateForm(){
+  const nameField = document.getElementById("name");
+  const emailField = document.getElementById("email");
+  const phoneField = document.getElementById("phone");
+
+  if(!nameField.value.trim() || !emailField.value.trim() || !phoneField.value.trim()){
+    alert("Please fill in all fields!");
+    return false;
+  }
+  if(!/^\d{10}$/.test(phoneField.value)){
+    alert("Enter a valid 10-digit phone number!");
+    return false;
+  }
+  alert("Registration successful!");
+  return true;
+}
+</script>
+</body>
+</html>
