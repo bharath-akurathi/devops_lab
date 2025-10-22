@@ -1,25 +1,29 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Build') {
-      steps {
-        sh '''
-          DEPLOY="$HOME/devops_lab_site"
-          mkdir -p "$DEPLOY"
-          cp -f website/Event_registration.html "$DEPLOY"/Event_registration.html
-        '''
-      }
-    }
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code...'
+            }
+        }
 
-    stage('Serve') {
-      steps {
-        sh '''
-          DEPLOY="$HOME/devops_lab_site"
-          FILE="$DEPLOY/Event_registration.html"
-          open "$FILE"
-        '''
-      }
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+            }
+        }
     }
-  }
 }
