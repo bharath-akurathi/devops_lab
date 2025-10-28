@@ -54,38 +54,6 @@
 
   <script>
     function validateForm() {
-      const form = document.forms["registrationForm"];
-
-      if (form.fullname.value.trim() === "") {
-        alert("Please enter your Full Name.");
-        form.fullname.focus();
-        return false;
-      }
-
-      const email = form.email.value;
-      if (email.trim() === "" || email.indexOf("@") === -1) {
-        alert("Please enter a valid Email ID.");
-        form.email.focus();
-        return false;
-      }
-
-      const phno = form.phno.value;
-      if (isNaN(phno) || phno.trim().length !== 10) {
-        alert("Please enter a valid 10-digit Phone Number.");
-        form.phno.focus();
-        return false;
-      }
-
-      if (form.gender.value === "") {
-        alert("Please select your Gender.");
-        return false;
-      }
-
-      if (form.event.value === "") {
-        alert("Please select an Event.");
-        form.event.focus();
-        return false;
-      }
       alert("Registration Successful!");
       return true;
     }
