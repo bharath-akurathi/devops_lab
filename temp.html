@@ -10,30 +10,38 @@
   <center>
   <div class="form-container">
     <h1>Event Registration</h1>
-
+    
     <form name="registrationForm" onsubmit="return validateForm()">
+      <p>
       <div class="form-row">
         <label for="fullname">Full Name:</label>
         <input type="text" name="fullname" id="fullname" required minlength="3">
       </div>
-
+      </p>
+      <p>
       <div class="form-row">
         <label for="email">Email ID:</label>
         <input type="email" name="email" id="email" required>
       </div>
+      </p>
 
+      <p>
       <div class="form-row">
         <label for="phno">Phone Number:</label>
         <input type="tel" name="phno" id="phno" required pattern="[0-9]{10}"
           title="Please enter a 10-digit phone number">
       </div>
+      </p>
 
+      <p>
       <div class="form-row">
         <label>Gender:</label>
         <input type="radio" name="gender" value="Male" required> Male
         <input type="radio" name="gender" value="Female" required> Female
       </div>
+      </p>
 
+      <p>
       <div class="form-row">
         <label for="event">Select Event:</label>
         <select id="event" name="event" required>
@@ -43,6 +51,7 @@
           <option value="Networking">Networking</option>
         </select>
       </div>
+      </p>
 
       <div class="buttons">
         <input type="reset" value="Reset">
