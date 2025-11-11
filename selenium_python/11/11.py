@@ -6,8 +6,9 @@ import time
 driver = webdriver.Chrome()
 
 try:
-    driver.get("http://localhost:8000")
-
+    #local file path to be put in driver.get() field
+    driver.get("file:///Users/akurathi/Desktop/Codes/devops_lab/selenium_python/11/Event_registration.html")
+    
     # Test 1: Check title
     print("Page Title:", driver.title)
 
