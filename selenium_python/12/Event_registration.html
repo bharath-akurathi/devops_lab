@@ -4,87 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Registration</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
-
-    .form-container {
-      background-color: #fff;
-      padding: 20px;
-      border: 1px solid #ccc;
-      width: 400px;
-      margin: 50px auto;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .form-row {
-      margin-bottom: 15px;
-    }
-
-    .form-row label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    .buttons {
-      text-align: right;
-      margin-top: 20px;
-    }
-
-    input[type="submit"],
-    input[type="reset"] {
-      padding: 8px 12px;
-      border: 1px solid #999;
-      cursor: pointer;
-      background-color: lightgreen;
-    }
-  </style>
 </head>
 
 <body>
-
+  <center>
   <div class="form-container">
     <h1>Event Registration</h1>
-
+    
     <form name="registrationForm" onsubmit="return validateForm()">
+      <p>
       <div class="form-row">
         <label for="fullname">Full Name:</label>
         <input type="text" name="fullname" id="fullname" required minlength="3">
       </div>
-
+      </p>
+      <p>
       <div class="form-row">
         <label for="email">Email ID:</label>
         <input type="email" name="email" id="email" required>
       </div>
+      </p>
 
+      <p>
       <div class="form-row">
         <label for="phno">Phone Number:</label>
         <input type="tel" name="phno" id="phno" required pattern="[0-9]{10}"
           title="Please enter a 10-digit phone number">
       </div>
+      </p>
 
+      <p>
       <div class="form-row">
         <label>Gender:</label>
         <input type="radio" name="gender" value="Male" required> Male
         <input type="radio" name="gender" value="Female" required> Female
       </div>
+      </p>
 
+      <p>
       <div class="form-row">
         <label for="event">Select Event:</label>
         <select id="event" name="event" required>
@@ -94,11 +51,7 @@
           <option value="Networking">Networking</option>
         </select>
       </div>
-
-      <div class="form-row">
-        <label for="address">Address:</label>
-        <textarea name="address" id="address" required></textarea>
-      </div>
+      </p>
 
       <div class="buttons">
         <input type="reset" value="Reset">
@@ -106,47 +59,10 @@
       </div>
     </form>
   </div>
+</center>
 
   <script>
     function validateForm() {
-      const form = document.forms["registrationForm"];
-
-      if (form.fullname.value.trim() === "") {
-        alert("Please enter your Full Name.");
-        form.fullname.focus();
-        return false;
-      }
-
-      const email = form.email.value;
-      if (email.trim() === "" || email.indexOf("@") === -1) {
-        alert("Please enter a valid Email ID.");
-        form.email.focus();
-        return false;
-      }
-
-      const phno = form.phno.value;
-      if (isNaN(phno) || phno.trim().length !== 10) {
-        alert("Please enter a valid 10-digit Phone Number.");
-        form.phno.focus();
-        return false;
-      }
-
-      if (form.gender.value === "") {
-        alert("Please select your Gender.");
-        return false;
-      }
-
-      if (form.event.value === "") {
-        alert("Please select an Event.");
-        form.event.focus();
-        return false;
-      }
-
-      if (form.address.value.trim() === "") {
-        alert("Please enter your Address.");
-        form.address.focus();
-        return false;
-      }
       alert("Registration Successful!");
       return true;
     }

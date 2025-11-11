@@ -17,7 +17,6 @@ try:
     driver.find_element(By.ID, "phno").send_keys("9876543210")
     driver.find_element(By.CSS_SELECTOR, "input[value='Male']").click()
     driver.find_element(By.ID, "event").send_keys("Workshop")
-    driver.find_element(By.ID, "address").send_keys("Hyderabad")
 
     # Submit the form
     driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
